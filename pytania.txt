@@ -1,0 +1,40 @@
+                        [ADMINISTRACJA]
+
+1) gdzie sa umieszczone hasla do uzytwkownika /etc/shadow
+    a) o grupach etc/group
+    b) o przypisanych numerach etc/shadow
+    c) o uslugach /etc/systemd/systemd
+
+2) jak wylistowac wlaczone uslugi: systemctl list-units --type=service
+3) jak wylistowac ilosc portow: firewall-cmd --list-ports
+4) modyfikacja pliku wlasciciela chown, modyfikacja dostepu chmod
+5) repozytoria et cetera:
+    A) rhel, centos:
+                    wget ..... .rpm
+                    sudo yum install .... .rpm
+    Ab) listowanie repozytorium: yum repolist
+    Ac) sprawdzanie dostepnych pakietow pod repozytorium 'epel:
+                    sudo yum --disablerepo="*" --enablerepo="epel" list available
+
+    B) ubuntu, debian
+                    repozytoria są umieszczone w pliku /etc/apt/sources.list. Dodajemy repoo a potem komenda apt update
+    Ba) komenda do dodania repo via terminal: sudo apt-add-repository ... .deb
+6) procesy zombie nazywaja sie defunct, zeby ubic trzeba wpisac: kill -9 ppid, PPID - PARENT PROCESS ID.
+    a) zeby sprawdzic ktory proces jest zombie - ps axo stat,ppid,pid,comm | grep -w defunct
+
+7) aby sprawdzic parent process trzeba wpisac: ps -o ppid= -p *PID*, aby sprawdzic dzewko procesor pstree
+8)ssh i jej flagi: i podaje lokalizacje pliku z kluczme prywatnym defaultowo bierze z ~/.ssh/id_rsa, F podajemy plik konf do polaczenia, defaultowo ~/.ssh/config
+8) tworzymy klucz ssh-keygen -t rsa, potem dodajemy klucz do authorized_keys
+9) tworzenie a) swapa- sudo fallocate -l 1G /swapfile b) sudo chmod 600 /swapfile c) sudo mkswao /swapfile d) sudo swapon /swapfile e) otworzyc /etc/fstab i dodac linijke /swapfile swap swap defaults 0 0 f) sudo swapon --show
+10) Wyjasnij poszczegolne pola w top -
+11) ustawianie runlevela - systemctl set-default, runlevel 5 to desktop, a tak z ciekawostek 6 to reboot
+12) load average to termin określający średnie obciążenie maszyny w ostatnim czasie w systemach Unix'owych. Jezeli mamy 2 rdzenie i LA wychodzi 2.5 to znaczy ze mamy 1/5 przeciazenia,
+13)
+                        [BASH,skrypty]
+
+-)Kopiowanie i podobne: kopiowanie rekursywne to flaga -R, flaga -a kopiuje rownie permissiony, kopiowanie calego folderu i subfolderow to cp /katalog/, kopiowanie wszystkich plikow (ukrytych oraz normalnych) to cp -A /katalog/
+-)flagi grepa: i - pomija wielkosc liter, v pokazuje to CO NIE ZAWIERA wyrazenia, r szuka rekursywnie, -e uzywane jak sie szuka linii dla kilku patternow grep -e 'nologin -e 'root' /etc/passwd
+-)find / -user root wynajduje wszystkie pliki roota
+
+                            [GITHUB]
+
